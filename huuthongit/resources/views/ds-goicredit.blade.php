@@ -56,6 +56,7 @@
             <div class="card-body">
                 <h4 class="header-title">Danh Sach goi credit</h4>
                 <a href="{{route('themgoicredit')}}" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới</a>
+                <a href="{{route('thungracgoicredit')}}" type="button" class="btn btn-warning btn-rounded waves-effect waves-light">Thùng rác</a>
                 <table id="goi-credit-datatable" class="table dt-responsive nowrap">
                     <thead>
                         <tr>
@@ -75,8 +76,8 @@
                             <td>{{ $goi->credit }}</td>
                             <td>{{ $goi->so_tien }}</td>
                             <td>
-                                <a  onclick="thongbaoxoa({{$goi->id}})" class="btn btn-danger waves-effect waves-light"><i class="la la-trash-o"></i></a>
-                                <a href="goicredit/sua/{{$goi->id}}" class="btn btn-purple waves-effect waves-light"><i class="la la-edit"></i></a>
+                                <a  onclick="thongbaoxoa({{$goi->id}})" class="btn btn-outline-danger waves-effect"><i class="la la-trash-o"></i></a>
+                                <a href="goicredit/sua/{{$goi->id}}" class="btn btn-outline-success waves-effect"><i class="la la-edit"></i></a>
                             </td>
                         </tr>
                         @endforeach

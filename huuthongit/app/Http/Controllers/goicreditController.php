@@ -76,6 +76,23 @@ class goicreditController extends Controller
         $goiCredits->delete();
         return redirect('goicredit/')->with('thongbao','Xóa thành công');
     }
+    public function thungrac()
+    {
+        $goiCredits=goicredit::onlyTrashed()->get();
+        return view('thungrac-goicredit',['goiCredits'=>$goiCredits]);
+    }
+    public function restore($id)
+    {
+        $goiCredits=goicredit::withTrashed()->find($id);
+        $goiCredits->restore();
+        return redirect('goicredit');
+    }
+    public function xoadb($id)
+    {
+        $goiCredits=goicredit::withTrashed()->find($id);
+        $goiCredits->forceDelete();
+        return redirect('goicredit/thungrac');
+    }
 
     /**
      * Show the form for creating a new resource.

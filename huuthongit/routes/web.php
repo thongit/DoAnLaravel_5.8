@@ -39,12 +39,18 @@ Route::post('cauhoi/themmoi','cauhoiController@postThem');
 Route::get('cauhoi/sua/{id}','cauhoiController@getSua');
 Route::post('cauhoi/sua/{id}','cauhoiController@postSua');
 Route::get('cauhoi/xoa/{id}','cauhoiController@getXoa');
+Route::get('cauhoi/restore/{id}','cauhoiController@restore');
+Route::get('cauhoi/xoadb/{id}','cauhoiController@xoadb');
+Route::get('cauhoi/thungrac','cauhoiController@thungrac')->name('thungraccauhoi');
 
 Route::get('goicredit/themmoi','goicreditController@getThem')->name('themgoicredit');
 Route::post('goicredit/themmoi','goicreditController@postThem');
 Route::get('goicredit/sua/{id}','goicreditController@getSua');
 Route::post('goicredit/sua/{id}','goicreditController@postSua');
 Route::get('goicredit/xoa/{id}','goicreditController@getXoa');
+Route::get('goicredit/restore/{id}','goicreditController@restore');
+Route::get('goicredit/xoadb/{id}','goicreditController@xoadb');
+Route::get('goicredit/thungrac','goicreditController@thungrac')->name('thungracgoicredit');
 
 Route::get('nguoichoi','nguoichoiController@index')->name('danhsachnguoichoi');
 Route::get('nguoichoi/themmoi','nguoichoiController@getThem')->name('themnguoichoi');

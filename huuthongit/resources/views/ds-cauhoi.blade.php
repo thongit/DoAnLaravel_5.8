@@ -55,6 +55,7 @@
             <div class="card-body">
                 <h4 class="header-title">Danh Sách Câu Hỏi</h4>
                 <a href="{{route('themcauhoi')}}" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới</a>
+                <a href="{{route('thungraccauhoi')}}" type="button" class="btn btn-warning btn-rounded waves-effect waves-light">Thùng rác</a>
                 <br>
                 @if(session('thongbao'))
                 <div class="alert alert-success">
@@ -92,8 +93,8 @@
                             <td>{{ $t->phuong_an_d }}</td>
                             <td>{{ $t->dap_an }}</td>
                             <td>
-                            <a  onclick="thongbaoxoa({{$t->id}})" class="btn btn-danger waves-effect waves-light"><i class="la la-trash-o"></i></a>
-                            <a href="cauhoi/sua/{{$t->id}}" class="btn btn-purple waves-effect waves-light"><i class="la la-edit"></i></a>
+                            <a  onclick="thongbaoxoa({{$t->id}})" class="btn btn-outline-danger waves-effect"><i class="la la-trash-o"></i></a>
+                            <a href="cauhoi/sua/{{$t->id}}" class="btn btn-outline-success waves-effect"><i class="la la-edit"></i></a>
                             </td>
                         </tr>
                         @endforeach

@@ -83,8 +83,8 @@
                             <td>{{ $nc->diem_cao_nhat }}</td>
                             <td>{{ $nc->credit }}</td>
                             <td>
-                                <a  onclick="thongbaoxoa({{$nc->id}})" class="btn btn-danger waves-effect waves-light"><i class="la la-trash-o"></i></a>
-                                <a href="nguoichoi/sua/{{$nc->id}}" class="btn btn-purple waves-effect waves-light"><i class="la la-edit"></i></a>
+                                <a  onclick="thongbaoxoa({{$nc->id}})" class="btn btn-outline-danger waves-effect"><i class="la la-trash-o"></i></a>
+                                <a href="nguoichoi/sua/{{$nc->id}}" class="btn btn-outline-success waves-effect"><i class="la la-edit"></i></a>
                             </td>
                         </tr>
                         @endforeach

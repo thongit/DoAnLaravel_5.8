@@ -21,9 +21,9 @@
 <!-- Sweet alert init js-->
 <script src="{{ asset('assets/js/pages/sweet-alerts.init.js') }}"></script>
 <!-- Datatables init -->
-<script>
+{{-- <script>
     $(document).ready(function() {
-    $("#linh-vuc-datatable").DataTable({
+    $("#cau-hoi-datatable").DataTable({
         language: {
             paginate: {
                 previous: "<i class='mdi mdi-chevron-left'>",
@@ -37,7 +37,7 @@
         }
     });
 });
-</script>
+</script> --}}
 @endsection
 @section('css')
 <!-- third party css -->
@@ -49,36 +49,50 @@
 <!-- third party css end -->
 @endsection
 @section('main-content')
-<h1>Danh sách lĩnh vực</h1>
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title">Danh Sach Linh Vuc</h4>
-                <a href="{{route('linhvuc.themmoi')}}" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới</a>
-                <a href="{{route('thungraclinhvuc')}}" type="button" class="btn btn-warning btn-rounded waves-effect waves-light">Thùng rác</a>
+                <h4 class="header-title">Danh Sách Câu Hỏi</h4>
+                <br>
                 @if(session('thongbao'))
                 <div class="alert alert-success">
                     {{session('thongbao')}}
                 </div>
                 @endif
-                <table id="linh-vuc-datatable" class="table dt-responsive nowrap">
+                <table id="cau-hoi-datatable" class="table dt-responsive nowrap">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Tên lĩnh vực</th>
+                            <th>Nội dung</th>
+                            <th>Lĩnh vực ID</th>
+                            <th>Phương án A</th>
+                            <th>Phương án B</th>
+                            <th>Phương án C</th>
+                            <th>Phương án D</th>
+                            <th>Đáp Án</th>
                             <th></th>
-                           
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($linhvucs as $t)
+                        @foreach ($cauHoi as $t)
                         <tr>
                             <td>{{ $t->id }}</td>
-                            <td>{{ $t->ten_linh_vuc }}</td>
+                            <td>{{ $t->noi_dung }}</td>
                             <td>
-                            <a  onclick="thongbaoxoa({{$t->id}})" class="btn btn-outline-danger waves-effect"><i class="la la-trash-o"></i></a>
-                            <a href="linhvuc/sua/{{$t->id}}" class="btn btn-outline-success waves-effect"><i class="la la-edit"></i></a>
+                                {{-- @if($linhvucs->id==$t->linh_vuc_id)
+                                {{  $linhvucs->ten_linh_vuc }}
+                                @endif --}}
+                                {{ $t->linhVuc->ten_linh_vuc}}
+                            </td>
+                            <td>{{ $t->phuong_an_a }}</td>
+                            <td>{{ $t->phuong_an_b }}</td>
+                            <td>{{ $t->phuong_an_c }}</td>
+                            <td>{{ $t->phuong_an_d }}</td>
+                            <td>{{ $t->dap_an }}</td>
+                            <td>
+                                <a  onclick="thongbaoxoa({{$t->id}})" class="btn btn-outline-danger waves-effect"><i class="la la-trash-o"></i></a>
+                                <a onclick="thongbaokhoiphuc({{$t->id}})" class="btn btn-outline-success waves-effect"><i class="la la-arrow-circle-left"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -91,7 +105,7 @@
 <script>
 function thongbaoxoa($id) {
     Swal.fire({
-        title: 'Bạn có Muốn Xóa Không?',
+        title: 'Bạn có chắc chắn muốn xóa Không?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -105,7 +119,28 @@ function thongbaoxoa($id) {
             'Bạn đã xóa thành công.',
             'success'
             )
-            $url='linhvuc/xoa/'+$id;
+            $url='xoadb/'+$id;
+            open($url,"_self") 
+        }
+    })
+}
+function thongbaokhoiphuc($id) {
+    Swal.fire({
+        title: 'Bạn có chắc khôi phục không?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok. Khôi phục nó!',
+        cancelButtonText:'Không'
+        }).then((result) => {
+        if (result.value) {
+            Swal.fire(
+            'Đã khôi phục!',
+            'Bạn đã khôi phục thành công.',
+            'success'
+            )
+            $url='restore/'+$id;
             open($url,"_self") 
         }
     })

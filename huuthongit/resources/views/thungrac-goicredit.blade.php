@@ -21,9 +21,10 @@
 <!-- Sweet alert init js-->
 <script src="{{ asset('assets/js/pages/sweet-alerts.init.js') }}"></script>
 <!-- Datatables init -->
+<!-- Datatables init -->
 <script>
     $(document).ready(function() {
-    $("#linh-vuc-datatable").DataTable({
+    $("#goi-credit-datatable").DataTable({
         language: {
             paginate: {
                 previous: "<i class='mdi mdi-chevron-left'>",
@@ -49,49 +50,47 @@
 <!-- third party css end -->
 @endsection
 @section('main-content')
-<h1>Danh sách lĩnh vực</h1>
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title">Danh Sach Linh Vuc</h4>
-                <a href="{{route('linhvuc.themmoi')}}" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới</a>
-                <a href="{{route('thungraclinhvuc')}}" type="button" class="btn btn-warning btn-rounded waves-effect waves-light">Thùng rác</a>
-                @if(session('thongbao'))
-                <div class="alert alert-success">
-                    {{session('thongbao')}}
-                </div>
-                @endif
-                <table id="linh-vuc-datatable" class="table dt-responsive nowrap">
+                <h4 class="header-title">Danh Sach goi credit</h4>
+                <a href="{{route('themgoicredit')}}" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới</a>
+                <table id="goi-credit-datatable" class="table dt-responsive nowrap">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Tên lĩnh vực</th>
+                            <th>Tên gói</th>
+                            <th>Credit</th>
+                            <th>Số tiền</th>
                             <th></th>
                            
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($linhvucs as $t)
+                        @foreach ($goiCredits as $goi)
                         <tr>
-                            <td>{{ $t->id }}</td>
-                            <td>{{ $t->ten_linh_vuc }}</td>
+                            <td>{{ $goi->id }}</td>
+                            <td>{{ $goi->ten_goi }}</td>
+                            <td>{{ $goi->credit }}</td>
+                            <td>{{ $goi->so_tien }}</td>
                             <td>
-                            <a  onclick="thongbaoxoa({{$t->id}})" class="btn btn-outline-danger waves-effect"><i class="la la-trash-o"></i></a>
-                            <a href="linhvuc/sua/{{$t->id}}" class="btn btn-outline-success waves-effect"><i class="la la-edit"></i></a>
+                            <a  onclick="thongbaoxoa({{$goi->id}})" class="btn btn-outline-danger waves-effect"><i class="la la-trash-o"></i></a>
+                            <a onclick="thongbaokhoiphuc({{$goi->id}})" class="btn btn-outline-success waves-effect"><i class="la la-arrow-circle-left"></i></a>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+
             </div> <!-- end card body-->
         </div> <!-- end card -->
     </div><!-- end col-->
 </div>
 <script>
-function thongbaoxoa($id) {
+ function thongbaoxoa($id) {
     Swal.fire({
-        title: 'Bạn có Muốn Xóa Không?',
+        title: 'Bạn có chắc chắn muốn xóa Không?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -105,11 +104,32 @@ function thongbaoxoa($id) {
             'Bạn đã xóa thành công.',
             'success'
             )
-            $url='linhvuc/xoa/'+$id;
+            $url='xoadb/'+$id;
             open($url,"_self") 
         }
     })
 }
-</script>
+function thongbaokhoiphuc($id) {
+    Swal.fire({
+        title: 'Bạn có chắc khôi phục không?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok. Khôi phục nó!',
+        cancelButtonText:'Không'
+        }).then((result) => {
+        if (result.value) {
+            Swal.fire(
+            'Đã khôi phục!',
+            'Bạn đã khôi phục thành công.',
+            'success'
+            )
+            $url='restore/'+$id;
+            open($url,"_self") 
+        }
+    })
+}
+    </script>
     <!-- end row-->
 @endsection

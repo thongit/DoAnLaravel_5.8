@@ -96,6 +96,23 @@ class cauhoiController extends Controller
         $cauhoi->delete();
         return redirect('cauhoi/')->with('thongbao','Xóa thành công');
     }
+    public function thungrac()
+    {
+        $cauHoi=cauhoi::onlyTrashed()->get();
+        return view('thungrac-cauhoi',['cauHoi'=>$cauHoi]);
+    }
+    public function restore($id)
+    {
+        $cauHoi=cauhoi::withTrashed()->find($id);
+        $cauHoi->restore();
+        return redirect('cauhoi');
+    }
+    public function xoadb($id)
+    {
+        $cauHoi=cauhoi::withTrashed()->find($id);
+        $cauHoi->forceDelete();
+        return redirect('cauhoi/thungrac');
+    }
 
     /**
      * Show the form for creating a new resource.
