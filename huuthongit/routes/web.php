@@ -68,4 +68,6 @@ Route::post('/dangnhap','pagesController@postxulyDangNhap')->name('xulydangnhap'
 
 
 Route::get('api/nguoichoi','nguoichoiController@layDanhSach');
+Route::get('api/linhvuc','linhvucController@layDanhSach');
+Route::get('api/cauhoi','cauhoiController@layDanhSach');
 

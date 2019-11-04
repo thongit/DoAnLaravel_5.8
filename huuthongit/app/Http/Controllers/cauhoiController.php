@@ -12,6 +12,15 @@ class cauhoiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function layDanhSach(Request $request) {
+        $linhvucID=$request->query('linhvuc');
+        $cauhois=cauhoi::where('linh_vuc_id',$linhvucID)->orderBy(DB::raw('RAND()'))->take(1)->get();
+        $result=[
+            'success'=>true,
+            'data'=>$cauhois
+    	];
+    	return response()->json($result);
+    }
     public function index()
     {
         $cauHoi=cauhoi::all();

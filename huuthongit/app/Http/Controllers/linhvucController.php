@@ -11,6 +11,14 @@ class linhvucController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function layDanhSach(Request $request) {
+        $linhvucs=linhvuc::all()->random(5);
+        $result=[
+            'success'	=>true,
+            'data'=>$linhvucs
+    	];
+    	return response()->json($result);
+    }
     public function index()
     {
         $linhvucs=linhvuc::all();
