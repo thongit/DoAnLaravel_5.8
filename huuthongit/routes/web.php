@@ -12,6 +12,9 @@
 */
 
 Route::get('/', function () {
+    return view('dangnhap');
+});
+Route::get('/ADMIN', function () {
     return view('layout');
 })->name('dashboard');
 Route::prefix('linhvuc')->group(function(){
@@ -59,8 +62,8 @@ Route::get('nguoichoi/sua/{id}','nguoichoiController@getSua');
 Route::post('nguoichoi/sua/{id}','nguoichoiController@postSua');
 Route::get('nguoichoi/xoa/{id}','nguoichoiController@getXoa');
 
-Route::get('/dangnhap','pagesController@getDangnhap');
-Route::post('/dangnhap','pagesController@postDangnhap');
+Route::get('/dangnhap','pagesController@getDangnhap')->name('dangnhap');
+Route::post('/dangnhap','pagesController@postxulyDangNhap')->name('xulydangnhap');
 
 Route::get('api/nguoichoi','nguoichoiController@layDanhSach');
 

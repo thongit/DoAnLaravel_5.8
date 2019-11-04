@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\quantrivien;
+use Illuminate\Support\Facades\DB;
+use Alert;
+
 class pagesController extends Controller
 {
     /**
@@ -20,21 +23,28 @@ class pagesController extends Controller
     {
         return view('dangnhap');
     }
-    public function postDangnhap(Request $request)
+    public function postxulyDangNhap(Request $request)
     {
         $thongtin=$request->only(['ten_dang_nhap','mat_khau']);
         $qtv=quantrivien::where('ten_dang_nhap',$thongtin['ten_dang_nhap'])->first();
-        return $qtv;
         if($qtv ==null)
         {
-            return "sai tên đăng nhập";
+            
+            return redirect('dangnhap')->with('error', ('Tên tài khoản không tồn tại,vui lòng nhập lại!'));
         }
-        if(Hash::check($thongtin['mat_khau'], $qtv->mau_khau))
+        if(!Hash::check($thongtin['mat_khau'],$qtv->mat_khau))
         {
-            return "sai mat khau";
+            return redirect('dangnhap')->with('error', ('Mật khẩu không đúng, vui lòng nhập lại!'));
         }
         Auth::login($qtv);
-        return "đúng";
+        $ten=$qtv->hoten;
+        return view('navigation.blade',$ten);
+        return redirect()->route('dashboard');
+    }
+     public function dangXuat()
+    {
+         Auth::logout();
+        return redirect()->route('dangnhap');
     }
 
     /**

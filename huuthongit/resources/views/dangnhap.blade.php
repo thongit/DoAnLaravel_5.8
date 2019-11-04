@@ -26,7 +26,6 @@
                         <div class="card">
 
                             <div class="card-body p-4">
-                                
                                 <div class="text-center w-75 m-auto">
                                     <a href="index.html">
                                         <span><img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="26"></span>
@@ -35,17 +34,22 @@
                                 </div>
 
                                 <h5 class="auth-title">Sign In</h5>
+                                 @if (session('error'))
+    <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+    </div>
+@endif
+                                <form action="{{ route('xulydangnhap')}}" method="POST">
 
-                                <form action="dangnhap" method="POST">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                                     <div class="form-group mb-3">
                                         <label for="emailaddress">Tên đăng nhập</label>
-                                        <input class="form-control" type="text" name="ten_dang_nhap" placeholder="Enter your name">
+                                        <input class="form-control" id="ten_dang_nhap" type="text" name="ten_dang_nhap" placeholder="Enter your name">
                                     </div>
 
                                     <div class="form-group mb-3">
                                         <label for="password">Mật khẩu</label>
-                                        <input class="form-control" type="password" name="mat_khau"  placeholder="Enter your password">
+                                        <input class="form-control" id="mat_khau" type="password" name="mat_khau"  placeholder="Enter your password">
                                     </div>
 
                                     <div class="form-group mb-3">
@@ -109,6 +113,6 @@
 
         <!-- App js -->
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
-        
+       
     </body>
 </html>
