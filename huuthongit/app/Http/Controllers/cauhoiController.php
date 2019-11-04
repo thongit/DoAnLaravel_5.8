@@ -14,7 +14,6 @@ class cauhoiController extends Controller
      */
     public function index()
     {
-
         $cauHoi=cauhoi::all();
         $trash=DB::table('cauhoi')->whereNotNull('deleted_at')->get();
         return view('ds-cauhoi',['cauHoi'=>$cauHoi,'trash'=>$trash]);
