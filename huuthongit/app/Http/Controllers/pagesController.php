@@ -26,6 +26,7 @@ class pagesController extends Controller
     }
     public function postxulyDangNhap(Request $request)
     {
+       
         $thongtin=$request->only(['ten_dang_nhap','mat_khau']);
         $qtv=quantrivien::where('ten_dang_nhap',$thongtin['ten_dang_nhap'])->first();
        
