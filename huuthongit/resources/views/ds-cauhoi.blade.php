@@ -82,10 +82,11 @@
                             <td>{{ $t->id }}</td>
                             <td>{{ $t->noi_dung }}</td>
                             <td>
-                                {{-- @if($linhvucs->id==$t->linh_vuc_id)
+                               {{-- @if($linhvucs->id==$t->linh_vuc_id)
                                 {{  $linhvucs->ten_linh_vuc }}
                                 @endif --}}
-                                {{ $t->linhVuc->ten_linh_vuc}}
+                                {{ $t->LinhVuc->ten_linh_vuc}}
+                                
                             </td>
                             <td>{{ $t->phuong_an_a }}</td>
                             <td>{{ $t->phuong_an_b }}</td>

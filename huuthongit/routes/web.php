@@ -62,8 +62,10 @@ Route::get('nguoichoi/sua/{id}','nguoichoiController@getSua');
 Route::post('nguoichoi/sua/{id}','nguoichoiController@postSua');
 Route::get('nguoichoi/xoa/{id}','nguoichoiController@getXoa');
 
-Route::get('/dangnhap','pagesController@getDangnhap')->name('dangnhap');
+Route::get('/dangnhap','pagesController@getDangnhap')->name('dangnhap')->middleware('guest');
+Route::get('/dangxuat','pagesController@getdangXuat')->name('dangxuat');
 Route::post('/dangnhap','pagesController@postxulyDangNhap')->name('xulydangnhap');
+
 
 Route::get('api/nguoichoi','nguoichoiController@layDanhSach');
 

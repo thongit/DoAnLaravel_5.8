@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\quantrivien;
+use App\Providers;
 use Illuminate\Support\Facades\DB;
 use Alert;
 
@@ -27,6 +28,7 @@ class pagesController extends Controller
     {
         $thongtin=$request->only(['ten_dang_nhap','mat_khau']);
         $qtv=quantrivien::where('ten_dang_nhap',$thongtin['ten_dang_nhap'])->first();
+       
         if($qtv ==null)
         {
             
@@ -37,11 +39,9 @@ class pagesController extends Controller
             return redirect('dangnhap')->with('error', ('Mật khẩu không đúng, vui lòng nhập lại!'));
         }
         Auth::login($qtv);
-        $ten=$qtv->hoten;
-        return view('navigation.blade',$ten);
         return redirect()->route('dashboard');
     }
-     public function dangXuat()
+     public function getdangXuat()
     {
          Auth::logout();
         return redirect()->route('dangnhap');
@@ -56,6 +56,7 @@ class pagesController extends Controller
     {
         //
     }
+
 
     /**
      * Store a newly created resource in storage.
