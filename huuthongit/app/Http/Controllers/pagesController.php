@@ -27,25 +27,46 @@ class pagesController extends Controller
     public function postxulyDangNhap(Request $request)
     {
        
-        $thongtin=$request->only(['ten_dang_nhap','mat_khau']);
-        $qtv=quantrivien::where('ten_dang_nhap',$thongtin['ten_dang_nhap'])->first();
+        // $thongtin=$request->only(['ten_dang_nhap','mat_khau']);
+        // $qtv=quantrivien::where('ten_dang_nhap',$thongtin['ten_dang_nhap'])->first();
        
-        if($qtv ==null)
-        {
+        // if($qtv ==null)
+        // {
             
-            return redirect('dangnhap')->with('error', ('Tên tài khoản không tồn tại,vui lòng nhập lại!'));
-        }
-        if(!Hash::check($thongtin['mat_khau'],$qtv->mat_khau))
+        //     return redirect('dangnhap')->with('error', ('Tên tài khoản không tồn tại,vui lòng nhập lại!'));
+        // }
+        // if(!Hash::check($thongtin['mat_khau'],$qtv->mat_khau))
+        // {
+        //     return redirect('dangnhap')->with('error', ('Mật khẩu không đúng, vui lòng nhập lại!'));
+        // }
+        $this->validate($request,
+        [
+            'ten_dang_nhap'=>'required',
+            'mat_khau'=>'required'
+        ],
+        ['ten_dang_nhap.required'=>'Tên đăng nhập không đúng,xin nhập lại',
+        'mat_khau.required'=>'Mật đăng nhập không đúng,xin nhập lại',
+        ]);
+        $ten_dang_nhap=$request->ten_dang_nhap;
+        $mat_khau=$request->mat_khau;
+        if(Auth::attempt(['ten_dang_nhap'=>$ten_dang_nhap,'password'=>$mat_khau]))
         {
-            return redirect('dangnhap')->with('error', ('Mật khẩu không đúng, vui lòng nhập lại!'));
+            return redirect('admin');
         }
-        Auth::login($qtv);
-        return redirect()->route('dashboard');
+        else{
+        return redirect('dangnhap')->with('error', ('Tên đăng nhập hoặc mật khẩu không đúng,vui lòng nhập lại!'));;
+        }
+        // Auth::login($qtv);  
+        // return redirect()->route('dashboard');
     }
      public function getdangXuat()
     {
          Auth::logout();
         return redirect()->route('dangnhap');
+    }
+    public function LayThongTin()
+    {
+        return Auth::user();
     }
 
     /**

@@ -40,7 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        'quantrivien' => [
+            'driver' => 'session',
+            'provider' => 'quantrivien',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -71,9 +74,9 @@ return [
             'model' => App\quantrivien::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
+        // 'quantrivien' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\quantrivien::class,
         // ],
     ],
 

@@ -124,19 +124,20 @@
 
                         </div>
                     </li>
-
+                    {{-- @if(isset($user_login)) --}}
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                             <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
                             <span class="pro-user-name ml-1">
-                               <i class="mdi mdi-chevron-down"></i> 
+                           
+                            <i class="mdi mdi-chevron-down"></i> 
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                             <!-- item-->
                             <div class="dropdown-item noti-title">
                                 <h5 class="m-0">
-                                    Welcome !
+                                    {{-- Welcome {{$user_login->ho_ten}} --}}
                                 </h5>
                             </div>
 
@@ -168,7 +169,7 @@
 
                         </div>
                     </li>
-
+                    {{-- @endif --}}
                     <li class="dropdown notification-list">
                         <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect">
                             <i class="fe-settings noti-icon"></i>
