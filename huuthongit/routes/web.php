@@ -69,6 +69,9 @@ Route::get('/dangnhap','pagesController@getDangnhap')->name('dangnhap');
 Route::get('/dangxuat','pagesController@getdangXuat')->name('dangxuat');
 Route::post('/dangnhap','pagesController@postxulyDangNhap')->name('xulydangnhap');
 Route::get('/test','pagesController@LayThongTin');
+Route::get('/upload','UploadFileController@HienThiFormUpload');
+Route::post('/upload','UploadFileController@Upload')->name("upload");
+
 
 
 

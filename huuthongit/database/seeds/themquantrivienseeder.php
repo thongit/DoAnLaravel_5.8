@@ -13,15 +13,21 @@ class themquantrivienseeder extends Seeder
     public function run()
     {
         $quantrivien = quantrivien::create(
-            ['ten_dang_nhap'=>'admin1',
+            ['ten_dang_nhap'=>'huuthong',
             'mat_khau'=>Hash::make('123456'),
-            'ho_ten'=>'quan tri vien 1'
+            'ho_ten'=>'Nguyễn Hữu Thông'
             ]
         );
         $quantrivien = quantrivien::create(
-            ['ten_dang_nhap'=>'admin2',
-            'mat_khau'=>Hash::make('abcdef'),
-            'ho_ten'=>'quan tri vien 2'
+            ['ten_dang_nhap'=>'minhqui',
+            'mat_khau'=>Hash::make('123456'),
+            'ho_ten'=>'Trương Minh Quí'
+            ]
+        );
+        $quantrivien = quantrivien::create(
+            ['ten_dang_nhap'=>'minhnhut',
+            'mat_khau'=>Hash::make('123456'),
+            'ho_ten'=>'Trần Minh Nhựt'
             ]
         );
     }
