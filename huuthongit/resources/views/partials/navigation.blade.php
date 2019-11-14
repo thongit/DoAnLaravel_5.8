@@ -341,10 +341,10 @@
                             <a href="{{route('danhsachcauhoi')}}"> <i class="fas fa-question-circle"></i>Câu hỏi<div class="arrow-down"></div></a>
                             <ul class="submenu">
                                 <li>
-                                    <a href="admin-widgets.html"><i class="fas fa-plus-square"></i>Thêm câu hỏi</a>
+                                    <a href="{{route('themcauhoi')}}"><i class="fas fa-plus-square"></i>Thêm câu hỏi</a>
                                 </li>
                                 <li>
-                                    <a href="admin-sweet-alert.html"><i class="la la-trash-o"></i>Thùng rác</a>
+                                    <a href="{{route('thungraccauhoi')}}"><i class="la la-trash-o"></i>Thùng rác</a>
                                 </li>
                             </ul>
                         </li>
@@ -352,10 +352,10 @@
                             <a href="{{route('danhsachgoicredit')}}"> <i class="fas fa-credit-card"></i>Gói Credit<div class="arrow-down"></div></a>
                             <ul class="submenu">
                                 <li>
-                                    <a href="admin-widgets.html"><i class="fas fa-plus-square"></i>Thêm Credit</a>
+                                    <a href="{{route('themgoicredit')}}"><i class="fas fa-plus-square"></i>Thêm Credit</a>
                                 </li>
                                 <li>
-                                    <a href="admin-sweet-alert.html"><i class="la la-trash-o"></i>Thùng rác</a>
+                                    <a href="{{route('thungracgoicredit')}}"><i class="la la-trash-o"></i>Thùng rác</a>
                                 </li>
                             </ul>
                         </li>
@@ -366,7 +366,7 @@
                                     <a href="{{route('linhvuc.themmoi')}}"><i class="fas fa-plus-square"></i>Thêm lĩnh vực</a>
                                 </li>
                                 <li>
-                                    <a href="admin-sweet-alert.html"><i class="la la-trash-o"></i>Thùng rác</a>
+                                    <a href="{{route('thungraclinhvuc')}}"><i class="la la-trash-o"></i>Thùng rác</a>
                                 </li>
                             </ul>
                         </li>
@@ -374,12 +374,12 @@
                             <a href="#"> <i class="fas fa-user-shield"></i>Quản trị viên <div class="arrow-down"></div></a>
                             <ul class="submenu">
                                 <li>
-                                    <a href="admin-sweet-alert.html"><i class="fas fa-plus-square"></i>Thêm quản trị viên</a>
+                                    <a href="#"><i class="fas fa-plus-square"></i>Thêm quản trị viên</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="has-submenu">
-                            <a href="#"> <i class="fas fa-users"></i>Người chơi</a>
+                            <a href="{{route('danhsachnguoichoi')}}"> <i class="fas fa-users"></i>Người chơi</a>
                         </li>
                     </ul>
                     <!-- End navigation menu -->

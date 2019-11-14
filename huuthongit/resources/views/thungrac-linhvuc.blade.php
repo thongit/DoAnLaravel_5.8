@@ -54,7 +54,6 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title">Danh Sach Linh Vuc</h4>
                 <a href="{{route('linhvuc.themmoi')}}" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới</a>
                 <br>
                 @if(session('thongbao'))

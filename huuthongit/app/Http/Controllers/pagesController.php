@@ -16,6 +16,11 @@ class pagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $redirectTo='dashboard';
+    protected function redirectTo()
+    {
+        return 'dashboard';
+    }
     public function index()
     {
         //
@@ -49,6 +54,7 @@ class pagesController extends Controller
         ]);
         $ten_dang_nhap=$request->ten_dang_nhap;
         $mat_khau=$request->mat_khau;
+        //$remember=$request->has('remember')? true:false;
         if(Auth::attempt(['ten_dang_nhap'=>$ten_dang_nhap,'password'=>$mat_khau]))
         {
             return redirect('admin');

@@ -6,11 +6,11 @@
 <!-- Sweet alert init js-->
 <script src="{{ asset('assets/js/pages/sweet-alerts.init.js') }}"></script>
 <link href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+<h1>Sửa gói credit</h1>
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="mb-3 header-title">Thêm mới gói credit</h4>
                 {{-- @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>

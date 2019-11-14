@@ -27,16 +27,17 @@ class linhvucController extends Controller
     }
     public function postThem(Request $request)
     {
+        $linhvucs= new linhvuc;
         $this->validate($request,
         [
-            'Ten'=>'required|min:3|max:100'
+            'Ten'=>'required|min:2|max:100|unique:linhvuc,ten_linh_vuc'
         ],
         ['Ten.required'=>'Bạn chưa nhập tên lĩnh vực',
-            'Ten.min'=>'Tên lĩnh vực phải dài từ 3 đến 100 kí tự',
-            'Ten.max'=>'Tên lĩnh vực phải dài từ 3 đến 100 kí tự'
+            'Ten.min'=>'Tên lĩnh vực phải dài từ 2 đến 100 kí tự',
+            'Ten.max'=>'Tên lĩnh vực phải dài từ 2 đến 100 kí tự',
+            'Ten.unique'=>"Tên lĩnh vực đã tồn tại"
 
         ]);
-        $linhvucs= new linhvuc;
         $linhvucs->ten_linh_vuc= $request->Ten;
         $linhvucs->save();
         return redirect('linhvuc/themmoi')->with('thongbao','Thêm thành công');
@@ -51,11 +52,13 @@ class linhvucController extends Controller
         $linhvuc=linhvuc::find($id);
         $this->validate($request,
         [
-            'Ten'=>'required|min:3|max:100'
+            'Ten'=>'required|min:2|max:100|unique:linhvuc,ten_linh_vuc'
         ],
         ['Ten.required'=>'Bạn chưa nhập tên lĩnh vực',
-            'Ten.min'=>'Tên lĩnh vực phải dài từ 3 đến 100 kí tự',
-            'Ten.max'=>'Tên lĩnh vực phải dài từ 3 đến 100 kí tự'
+            'Ten.min'=>'Tên lĩnh vực phải dài từ 2 đến 100 kí tự',
+            'Ten.max'=>'Tên lĩnh vực phải dài từ 2 đến 100 kí tự',
+            'Ten.unique'=>"Tên lĩnh vực đã tồn tại"
+
         ]);
         $linhvuc->ten_linh_vuc= $request->Ten;
         $linhvuc->save();

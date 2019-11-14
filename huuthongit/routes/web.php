@@ -11,12 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dangnhap');
-});
-Route::get('/admin', function () {
-    return view('layout');
-})->name('dashboard');
+
 Route::middleware('auth')->group(function(){
     Route::prefix('linhvuc')->group(function(){
         Route::name('linhvuc.')->group(function(){
@@ -31,6 +26,7 @@ Route::middleware('auth')->group(function(){
     Route::get('goicredit','goicreditController@index')->name('danhsachgoicredit');
     Route::get('cauhoi','cauhoiController@index')->name('danhsachcauhoi');
     //Route::get('lv','linhvucController@index');
+    
     Route::get('linhvuc/sua/{id}','linhvucController@getSua');
     Route::post('linhvuc/sua/{id}','linhvucController@postSua');
     Route::get('linhvuc/xoa/{id}','linhvucController@destroy');
@@ -62,10 +58,17 @@ Route::middleware('auth')->group(function(){
     Route::get('nguoichoi/sua/{id}','nguoichoiController@getSua');
     Route::post('nguoichoi/sua/{id}','nguoichoiController@postSua');
     Route::get('nguoichoi/xoa/{id}','nguoichoiController@getXoa');
+
+    Route::get('/', function () {
+        return view('dangnhap');
+    })->middleware("guest");
+    Route::get('/admin', function () {
+        return view('layout');
+    })->name('dashboard');
 });
 
 
-Route::get('/dangnhap','pagesController@getDangnhap')->name('dangnhap');
+Route::get('/dangnhap','pagesController@getDangnhap')->name('dangnhap')->middleware("guest");
 Route::get('/dangxuat','pagesController@getdangXuat')->name('dangxuat');
 Route::post('/dangnhap','pagesController@postxulyDangNhap')->name('xulydangnhap');
 Route::get('/test','pagesController@LayThongTin');

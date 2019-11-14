@@ -49,11 +49,11 @@
 <!-- third party css end -->
 @endsection
 @section('main-content')
+<h1>Danh sách câu hỏi</h1>
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title">Danh Sách Câu Hỏi</h4>
                 <a href="{{route('themcauhoi')}}" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới</a>
                 <a href="{{route('thungraccauhoi')}}" type="button" class="btn btn-warning btn-rounded waves-effect waves-light">Thùng rác</a>
                 <br>

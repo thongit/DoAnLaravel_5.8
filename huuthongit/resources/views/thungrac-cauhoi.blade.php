@@ -49,11 +49,11 @@
 <!-- third party css end -->
 @endsection
 @section('main-content')
+<h1>Danh sách câu hỏi đã xóa</h1>
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title">Danh Sách Câu Hỏi</h4>
                 <br>
                 @if(session('thongbao'))
                 <div class="alert alert-success">

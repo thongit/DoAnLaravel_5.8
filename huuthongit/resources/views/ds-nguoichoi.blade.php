@@ -50,18 +50,17 @@
 <!-- third party css end -->
 @endsection
 @section('main-content')
+<h1>Danh sách người chơi</h1>
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title">Danh Sach người chơi</h4>
                 <a href="{{route('themnguoichoi')}}" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới</a>
                 <table id="goi-credit-datatable" class="table dt-responsive nowrap">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Tên đăng nhập</th>
-                            <th>Mật khẩu</th>
                             <th>Email</th>
                             <th>Hình đại diện</th>
                             <th>Điểm cao nhất</th>
@@ -75,7 +74,6 @@
                         <tr>
                             <td>{{ $nc->id }}</td>
                             <td>{{ $nc->ten_dang_nhap }}</td>
-                            <td>{{ '***' }}</td>
                             <td>{{ $nc->email }}</td>
                             <td>
                                 <img width="60px" src="assets/images/{{ $nc->hinh_dai_dien }}">  

@@ -50,11 +50,11 @@
 <!-- third party css end -->
 @endsection
 @section('main-content')
+<h1>Danh sách gói credit</h1>
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title">Danh Sach goi credit</h4>
                 <a href="{{route('themgoicredit')}}" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới</a>
                 <a href="{{route('thungracgoicredit')}}" type="button" class="btn btn-warning btn-rounded waves-effect waves-light">Thùng rác</a>
                 <table id="goi-credit-datatable" class="table dt-responsive nowrap">
