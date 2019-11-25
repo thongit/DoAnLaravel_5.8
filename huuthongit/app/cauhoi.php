@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class cauhoi extends Model
 {
     protected $table ="cauhoi";
-    
+    use SoftDeletes;
     public function LinhVuc()
     {
         return $this->belongsTo('App\linhvuc');
@@ -15,5 +15,5 @@ class cauhoi extends Model
     {
         return $this->hasMany('App\chitietluotchoi');
     }
-    use SoftDeletes;
+    
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\linhvuc;
+use App\cauhoi;
 class linhvucController extends Controller
 {
     /**
@@ -60,6 +61,7 @@ class linhvucController extends Controller
     public function destroy($id)
     {
         $linhvucs=linhvuc::find($id);
+        DB::table('cauhoi')->where('linh_vuc_id',$id)->delete();
         $linhvucs->delete();
         return redirect('linhvuc');
     }
