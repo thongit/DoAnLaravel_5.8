@@ -62,9 +62,10 @@ Route::middleware('auth')->group(function(){
     Route::get('/', function () {
         return view('dangnhap');
     })->middleware("guest");
-    Route::get('/admin', function () {
-        return view('layout');
-    })->name('dashboard');
+    Route::get('/admin','adminController@index')->name('dashboard');
+    // Route::get('/admin', function () {
+    //     return view('trangchu');
+    // })->name('dashboard');
 });
 
 
