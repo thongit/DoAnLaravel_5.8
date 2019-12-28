@@ -13,11 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 Route::get('nguoichoi','API\NguoiChoiAPI@layDanhSach');
 Route::get('linhvuc','API\LinhVucAPI@layDanhSach');
 Route::get('cauhoi/{id}','API\CauHoiAPI@layDanhSach');
 Route::post('dangnhap','API\DangNhapAPI@dangNhapNguoiChoi');
-Route::get('laydanhsach','API\DangNhapAPI@layThongTin');
+Route::post('dangki','API\DangKiAPI@dangKiNguoiChoi');
+Route::middleware(['assign.guard:api','jwt.auth'])->group(function()
+{
+    Route::get('laydanhsach','API\DangNhapAPI@layThongTin');
+});
