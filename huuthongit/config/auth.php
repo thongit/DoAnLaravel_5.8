@@ -38,16 +38,15 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'admins',
         ],
         'quantrivien' => [
             'driver' => 'session',
             'provider' => 'quantrivien',
         ],
         'api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'users',
-            'hash' => false,
         ],
     ],
 
@@ -71,13 +70,18 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\quantrivien::class,
+            'model' => App\User::class, 
         ],
 
-        // 'quantrivien' => [
-        //     'driver' => 'eloquent',
-        //     'model' => App\quantrivien::class,
-        // ],
+        'users' =>[
+            'driver' => 'eloquent',
+            'model' => App\nguoichoi::class,
+        ],
+
+        'admins' => [
+             'driver' => 'eloquent',
+             'model' => App\quantrivien::class,
+         ],
     ],
 
     /*

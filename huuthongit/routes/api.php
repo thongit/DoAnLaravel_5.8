@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('nguoichoi','API\NguoiChoiAPI@layDanhSach');
 Route::get('linhvuc','API\LinhVucAPI@layDanhSach');
 Route::get('cauhoi/{id}','API\CauHoiAPI@layDanhSach');
+Route::post('dangnhap','API\DangNhapAPI@dangNhapNguoiChoi');
+Route::get('laydanhsach','API\DangNhapAPI@layThongTin');

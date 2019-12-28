@@ -13,19 +13,27 @@ class themnguoichoiseeder extends Seeder
      */
     public function run()
     {
-        $count = 1;
-        while($count < 51) {
-			echo "Them nguoi choi thu " . $count . "\n";
-        	$ten_dang_nhap = Str::random(8);
-        	App\nguoichoi::create([
-        		'ten_dang_nhap' => $ten_dang_nhap,
-        		'mat_khau'		=> Hash::make(Str::random(6)),
-        		'email'			=> $ten_dang_nhap . '@gmail.com',
-        		'hinh_dai_dien'	=> $ten_dang_nhap . '.jpg',
-        		'diem_cao_nhat'	=> rand(1000, 5000),
-        		'credit'		=> rand(10, 500)
-        	]);
-        	$count++;
-        }
+   //      $count = 1;
+   //      while($count < 51) {
+			// echo "Them nguoi choi thu " . $count . "\n";
+   //      	$ten_dang_nhap = Str::random(8);
+   //      	App\nguoichoi::create([
+   //      		'ten_dang_nhap' => $ten_dang_nhap,
+   //      		'mat_khau'		=> Hash::make(Str::random(6)),
+   //      		'email'			=> $ten_dang_nhap . '@gmail.com',
+   //      		'hinh_dai_dien'	=> $ten_dang_nhap . '.jpg',
+   //      		'diem_cao_nhat'	=> rand(1000, 5000),
+   //      		'credit'		=> rand(10, 500)
+   //      	]);
+   //      	$count++;
+   //      }
+            App\nguoichoi::create([
+             'ten_dang_nhap' => 'minhnhut',
+             'mat_khau'      => Hash::make('123456'),
+             'email'         => 'minhnhut@gmail.com',
+             'hinh_dai_dien' => 'minhnhut.jpg',
+             'diem_cao_nhat' => '10',
+             'credit'        =>'10'
+         ]);
     }
 }
